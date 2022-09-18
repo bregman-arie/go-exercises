@@ -1,13 +1,18 @@
 # Go Exercises
 
+
+- [Go Exercises](#go-exercises)
+- [Exercises](#exercises)
+  - [Hello World](#hello-world)
+- [Questions](#questions)
+  - [Go 101](#go-101)
+
+
 :information_source: &nbsp;This repo contains questions and exercises to learn and practice Golang
 
-:bar_chart: &nbsp;There are currently **2** exercises and questions
+:bar_chart: &nbsp;There are currently **10** exercises and questions
 
-* Exercises
-* Questions
-
-# Golang Exercises
+# Exercises
 
 * [Hello World](#hello-world)
 
@@ -18,9 +23,10 @@
 |--------|--------|------|----|
 | Hello World! | [Exercise](exercises/hello_world/exercise.md) | [Solution](exercises/hello_world/main.go) | |
 | Variables & Constants | [Exercise](exercises/variables/exercise.md) | [Solution](exercises/variables/main.go) | |
+| Arithmetic Operators | [Exercise](exercises/arithmetic_operators/exercise.md) | [Solution](exercises/arithmetic_operators/main.go) | |
+| Data Types | [Exercise](exercises/data_types/exercise.md) | [Solution](exercises/data_types/main.go) | |
 
-
-# Golang Questions
+# Questions
 
 ## Go 101
 
@@ -47,6 +53,7 @@ With <code>var x int = 2</code> we are setting the variable type to integer, whi
 
 <details>
 <summary>True or False?
+
   * In Go we can redeclare variables
   * Once a variable declared, we must use it
 </summary>
@@ -62,6 +69,28 @@ This should be answered based on your usage but some examples are:
 
   * fmt - formatted I/O
   TODO
+</b></details>
+
+<details>
+<summary>What is the result of the following program?
+
+```
+package main
+
+import "fmt"
+
+func main() {
+    var userName
+    userName = "user"
+    fmt.Println(userName)
+}
+```
+</summary><br><b>
+
+Error. The type userName is not defined. It has to be declared or the value assignment should happen at declaration.
+
+So both `var userName = user` and `var userName string` are valid.
+
 </b></details>
 
 <details>
