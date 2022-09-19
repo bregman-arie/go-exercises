@@ -1,34 +1,46 @@
 # Go Exercises
 
-
-- [Go Exercises](#go-exercises)
-- [Exercises](#exercises)
-  - [Hello World](#hello-world)
-- [Questions](#questions)
-  - [Go 101](#go-101)
-
-
 :information_source: &nbsp;This repo contains questions and exercises to learn and practice Golang
 
-:bar_chart: &nbsp;There are currently **10** exercises and questions
+:bar_chart: &nbsp;There are currently **20** exercises and questions
 
-# Exercises
+- [Go Exercises](#go-exercises)
+  - [Exercises](#exercises)
+    - [Hello World](#hello-world)
+    - [Arrays](#arrays)
+    - [Loops](#loops)
+  - [Questions](#questions)
+    - [Go 101](#go-101)
+    - [Data Types](#data-types)
+    - [User Input](#user-input)
 
-* [Hello World](#hello-world)
+## Exercises
 
-<a name="exercises-hello-world"></a>
-## Hello World
+### Hello World
 
 |Name|Exercise|Solution|Comments|
 |--------|--------|------|----|
 | Hello World! | [Exercise](exercises/hello_world/exercise.md) | [Solution](exercises/hello_world/main.go) | |
 | Variables & Constants | [Exercise](exercises/variables/exercise.md) | [Solution](exercises/variables/main.go) | |
 | Arithmetic Operators | [Exercise](exercises/arithmetic_operators/exercise.md) | [Solution](exercises/arithmetic_operators/main.go) | |
-| Data Types | [Exercise](exercises/data_types/exercise.md) | [Solution](exercises/data_types/main.go) | |
+| Data Types | [Exercise](exercises/data_types/exercise.md) | [Solution](exercises/data_types/solution.md) | |
+| User Input | [Exercise](exercises/user_input/exercise.md) | [Solution](exercises/user_input/main.go) | |
 
-# Questions
+### Arrays
 
-## Go 101
+|Name|Exercise|Solution|Comments|
+|--------|--------|------|----|
+| Arrays 101 | [Exercise](exercises/arrays_101/exercise.md) | [Solution](exercises/arrays_101/solution.md) | |
+| Slices 101 | [Exercise](exercises/slices_101/exercise.md) | [Solution](exercises/slices_101/solution.md) | |
+
+### Loops
+
+TODO
+
+
+## Questions
+
+### Go 101
 
 <details>
 <summary>What are some characteristics of the Go programming language?</summary><br><b>
@@ -41,14 +53,6 @@
   * Platform independent
   * Compile to standalone binary - anything you need to run your app will be compiled into one binary. Very useful for version management in run-time.
   * Big community
-</b></details>
-
-<details>
-<summary>What is the difference between <code>var x int = 2</code> and <code>x := 2</code>?</summary><br><b>
-
-The result is the same, a variable with the value 2.
-
-With <code>var x int = 2</code> we are setting the variable type to integer, while with <code>x := 2</code> we are letting Go figure out by itself the type.
 </b></details>
 
 <details>
@@ -71,40 +75,6 @@ This should be answered based on your usage but some examples are:
   TODO
 </b></details>
 
-<details>
-<summary>What is the result of the following program?
-
-```
-package main
-
-import "fmt"
-
-func main() {
-    var userName
-    userName = "user"
-    fmt.Println(userName)
-}
-```
-</summary><br><b>
-
-Error. The type userName is not defined. It has to be declared or the value assignment should happen at declaration.
-
-So both `var userName = user` and `var userName string` are valid.
-
-</b></details>
-
-<details>
-<summary>What is the problem with the following block of code? How to fix it?
-
-```
-func main() {
-    var x float32 = 13.5
-    var y int
-    y = x
-}
-```
-</summary><br><b>
-</b></details>
 
 <details>
 <summary>The following block of code tries to convert the integer 101 to a string but instead we get "e". Why is that? How to fix it?
@@ -140,9 +110,118 @@ func main() {
 }
 ```
 </summary><br><b>
-
 Constants in Go can only be declared using constant expressions.
 But `x`, `y` and their sum is variable.
 <br>
 <code>const initializer x + y is not a constant</code>
+</b></details>
+
+### Data Types
+
+<details>
+<summary>What is the result of the following program?
+
+```
+package main
+
+import "fmt"
+
+func main() {
+    var userName
+    userName = "user"
+    fmt.Println(userName)
+}
+```
+</summary><br><b>
+
+Error. The type userName is not defined. It has to be declared or the value assignment should happen at declaration.
+
+So both `var userName = user` and `var userName string` are valid.
+
+</b></details>
+
+<details>
+<summary>What is the result of the following program?
+
+```Go
+package main
+ 
+import "fmt"
+ 
+func main() {
+    var x uint
+    x = -3
+    // comment!
+    fmt.Println(x)
+}
+```
+</summary><br><b>
+
+Error. When `x` is declared as `uint` it means you can't put any negative values. But because we did put a negative value (`-3`) it will fail to compile it.
+</b></details>
+
+<details>
+<summary>What is the problem with the following block of code? How to fix it?
+
+```
+func main() {
+    var x float32 = 13.5
+    var y int
+    y = x
+}
+```
+</summary><br><b>
+</b></details>
+
+<details>
+<summary>What is the difference between <code>var x int = 2</code> and <code>x := 2</code>?</summary><br><b>
+
+The result is the same, a variable with the value 2.
+
+With <code>var x int = 2</code> we are setting the variable type to integer, while with <code>x := 2</code> we are letting Go figure out by itself the type.
+</b></details>
+
+### User Input
+
+<details>
+<summary>Fix the following program to get an input from the user regarding his name and print it
+
+```Go
+var name string
+
+fmt.Scan(name)
+
+fmt.Println(name)
+```
+</summary><br><b>
+
+```Go
+var name string
+
+fmt.Scan(&name)
+
+fmt.Println(name)
+```
+
+</b></details>
+
+<details>
+<summary>Why when asking for user input, we have to specify &?</summary><br><b>
+
+Because we want to reference the memory address of the variable, this is where the user input will be stored.
+</b></details>
+
+<details>
+<summary>What do we print here?
+
+```Go
+var age int = 3
+
+fmt.Println(age)
+fmt.Println(&age)
+```
+</summary><br><b>
+
+The value of `age` variable and then the memory location of `age` variable
+
 </b></details>
