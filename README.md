@@ -7,12 +7,15 @@
 - [Go Exercises](#go-exercises)
   - [Exercises](#exercises)
     - [Hello World](#hello-world)
+    - [Strings](#strings)
     - [Arrays](#arrays)
     - [Loops](#loops)
   - [Questions](#questions)
     - [Go 101](#go-101)
     - [Data Types](#data-types)
     - [User Input](#user-input)
+    - [Functions](#functions)
+  - [Projects](#projects)
 
 ## Exercises
 
@@ -25,6 +28,14 @@
 | Arithmetic Operators | [Exercise](exercises/arithmetic_operators/exercise.md) | [Solution](exercises/arithmetic_operators/main.go) | |
 | Data Types | [Exercise](exercises/data_types/exercise.md) | [Solution](exercises/data_types/solution.md) | |
 | User Input | [Exercise](exercises/user_input/exercise.md) | [Solution](exercises/user_input/main.go) | |
+| Packages | [Exercise](exercises/packages/exercise.md) | [Solution](exercises/packages/main.go) | 
+
+
+### Strings
+
+|Name|Exercise|Solution|Comments|
+|--------|--------|------|----|
+| Split Strings | [Exercise](exercises/split_strings/exercise.md) | [Solution](exercises/split_strings/solution.md) | |
 
 ### Arrays
 
@@ -35,7 +46,9 @@
 
 ### Loops
 
-TODO
+|Name|Exercise|Solution|Comments|
+|--------|--------|------|----|
+| Loops 101 | [Exercise](exercises/loops_101/exercise.md) | [Solution](exercises/loops_101/main.go) | |
 
 
 ## Questions
@@ -72,48 +85,15 @@ TODO
 This should be answered based on your usage but some examples are:
 
   * fmt - formatted I/O
-  TODO
-</b></details>
+  * math - random numbers, arithmetic operations like square, etc.
+  * time - for any time related operation
 
-
-<details>
-<summary>The following block of code tries to convert the integer 101 to a string but instead we get "e". Why is that? How to fix it?
-
-```
-package main
-
-import "fmt"
-
-func main() {
-    var x int = 101
-    var y string
-    y = string(x)
-    fmt.Println(y)
-}
-```
-</summary><br><b>
-
-It looks what unicode value is set at 101 and uses it for converting the integer to a string.
-If you want to get "101" you should use the package "strconv" and replace <code>y = string(x)</code> with <code>y = strconv.Itoa(x)</code>
 </b></details>
 
 <details>
-<summary>What is wrong with the following code?:
+<summary>Why some functions and packages in Go begin with a Capital letter?</summary><br><b>
 
-```
-package main
-
-func main() {
-    var x = 2
-    var y = 3
-    const someConst = x + y
-}
-```
-</summary><br><b>
-Constants in Go can only be declared using constant expressions.
-But `x`, `y` and their sum is variable.
-<br>
-<code>const initializer x + y is not a constant</code>
+Any exported variable, function, ... begins with a capital letter. In fact when using a package, you can use only the things the package exports for you and others to use.
 </b></details>
 
 ### Data Types
@@ -181,6 +161,46 @@ The result is the same, a variable with the value 2.
 With <code>var x int = 2</code> we are setting the variable type to integer, while with <code>x := 2</code> we are letting Go figure out by itself the type.
 </b></details>
 
+<details>
+<summary>The following block of code tries to convert the integer 101 to a string but instead we get "e". Why is that? How to fix it?
+
+```
+package main
+
+import "fmt"
+
+func main() {
+    var x int = 101
+    var y string
+    y = string(x)
+    fmt.Println(y)
+}
+```
+</summary><br><b>
+
+It looks what unicode value is set at 101 and uses it for converting the integer to a string.
+If you want to get "101" you should use the package "strconv" and replace <code>y = string(x)</code> with <code>y = strconv.Itoa(x)</code>
+</b></details>
+
+<details>
+<summary>What is wrong with the following code?:
+
+```
+package main
+
+func main() {
+    var x = 2
+    var y = 3
+    const someConst = x + y
+}
+```
+</summary><br><b>
+Constants in Go can only be declared using constant expressions.
+But `x`, `y` and their sum is variable.
+<br>
+<code>const initializer x + y is not a constant</code>
+</b></details>
+
 ### User Input
 
 <details>
@@ -225,3 +245,49 @@ fmt.Println(&age)
 The value of `age` variable and then the memory location of `age` variable
 
 </b></details>
+
+### Functions
+
+<details>
+<summary>Define a function that prints "Hello World"</summary><br><b>
+
+```Go
+func PrintHelloWorld() {
+  fmt.Println("Hello World")
+}
+```
+</b></details>
+
+<details>
+<summary>What the following code does?
+
+```Go
+func add(x int, y int) int {
+	return x + y
+}
+```
+</summary><br><b>
+
+add is a function that takes two parameters (two integers) and returns their sum.
+</b></details>
+
+<details>
+<summary>Which of the following functions will work just fine?
+
+```Go
+func add(x int, y int) int {
+	return x + y
+}
+
+func add(x, y int) int {
+	return x + y
+}
+```
+</summary><br><b>
+
+Both. If two or more parameters share the same type, you can specify it only once.
+</b></details>
+
+## Projects
+
+TODO
