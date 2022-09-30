@@ -14,8 +14,8 @@
 
 ## Solution
 
-1. `var numbers[10]int{}`
-2. `var strings[4]string{"some", "random", "strings", ":)"}`
+1. `var numbers = [10]int{}`
+2. `var strings = [4]string{"some", "random", "strings", ":)"}`
 3. No, you can't mix data types in the same array
 4. Yes, you can add items to an array after it's declared. No, you can't at 50 items to an array of size 10. You can add items up to the size of the array.
 5. `games[0] = "Donkey Kong"`

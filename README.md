@@ -2,7 +2,7 @@
 
 :information_source: &nbsp;This repo contains questions and exercises to learn and practice Golang
 
-:bar_chart: &nbsp;There are currently **20** exercises and questions
+:bar_chart: &nbsp;There are currently **37** exercises and questions
 
 - [Go Exercises](#go-exercises)
   - [Exercises](#exercises)
@@ -10,11 +10,13 @@
     - [Strings](#strings)
     - [Arrays](#arrays)
     - [Loops](#loops)
+    - [Functions](#functions)
   - [Questions](#questions)
     - [Go 101](#go-101)
-    - [Data Types](#data-types)
+    - [Variables & Data Types](#variables--data-types)
     - [User Input](#user-input)
-    - [Functions](#functions)
+    - [Arrays](#arrays-1)
+    - [Functions](#functions-1)
   - [Projects](#projects)
 
 ## Exercises
@@ -49,6 +51,15 @@
 |Name|Exercise|Solution|Comments|
 |--------|--------|------|----|
 | Loops 101 | [Exercise](exercises/loops_101/exercise.md) | [Solution](exercises/loops_101/main.go) | |
+| Loops 102 | [Exercise](exercises/loops_102/exercise.md) | [Solution](exercises/loops_102/main.go) | |
+| Continue | [Exercise](exercises/continue/exercise.md) | [Solution](exercises/continue/main.go) | |
+
+### Functions
+
+|Name|Exercise|Solution|Comments|
+|--------|--------|------|----|
+| Functions 101 | [Exercise](exercises/functions_101/exercise.md) | [Solution](exercises/functions_101/solution.md) | |
+| Named Return Values | [Exercise](exercises/named_return_values/exercise.md) | [Solution](exercises/named_return_values/solution.md) | |
 
 
 ## Questions
@@ -96,7 +107,24 @@ This should be answered based on your usage but some examples are:
 Any exported variable, function, ... begins with a capital letter. In fact when using a package, you can use only the things the package exports for you and others to use.
 </b></details>
 
-### Data Types
+### Variables & Data Types
+
+<details>
+<summary>Demonstrate short and regular variable declaration</summary><br><b>
+
+```Go
+package main
+
+import "fmt"
+
+func main() {
+  x := 2
+  var y int = 2
+
+  fmt.Printf("x: %v. y: %v", x, y)
+}
+```
+</b></details>
 
 <details>
 <summary>What is the result of the following program?
@@ -185,7 +213,7 @@ If you want to get "101" you should use the package "strconv" and replace <code>
 <details>
 <summary>What is wrong with the following code?:
 
-```
+```Go
 package main
 
 func main() {
@@ -199,7 +227,51 @@ Constants in Go can only be declared using constant expressions.
 But `x`, `y` and their sum is variable.
 <br>
 <code>const initializer x + y is not a constant</code>
+
 </b></details>
+
+<details>
+<summary>What would be the result of executing the following code:
+
+```Go
+package main
+
+import "fmt"
+
+x := 2
+
+func main() {
+    x = 3
+    fmt.Println(x)
+}
+```
+</summary><br><b>
+
+It will fail with `expected declaration, found x` as outside of a function, every statement should start with a keyword (and short variable declarations won't work).
+</b></details>
+
+<details>
+<summary>Demonstrate a block of variable declarations (at least 3 variables)</summary><br><b>
+
+```Go
+package main
+
+import "fmt"
+
+var (
+  x bool   = false
+  y int    = 0
+  z string = "false"
+)
+
+func main() {
+  fmt.Printf("The type of x: %T. The value of x: %v\n", x, x)
+  fmt.Printf("The type of y: %T. The value of y: %v\n", y, y)
+  fmt.Printf("The type of z: %T. The value of z: %v\n", y, y)
+}
+```
+</b></details>
+
 
 ### User Input
 
@@ -246,6 +318,24 @@ The value of `age` variable and then the memory location of `age` variable
 
 </b></details>
 
+### Arrays
+
+<details>
+<summary>Define an array of the following colors: red, green and blue</summary><br><b>
+
+```Go
+var rgb = [3]string{"red", "green", "blue"}
+```
+</b></details>
+
+<details>
+<summary>You defined the following array and printed it. What was the output? <code>var numbers = [10]int{}</code></summary><br><b>
+
+```Go
+[0 0 0 0 0 0 0 0 0 0]
+```
+</b></details>
+
 ### Functions
 
 <details>
@@ -263,7 +353,7 @@ func PrintHelloWorld() {
 
 ```Go
 func add(x int, y int) int {
-	return x + y
+  return x + y
 }
 ```
 </summary><br><b>
@@ -276,17 +366,55 @@ add is a function that takes two parameters (two integers) and returns their sum
 
 ```Go
 func add(x int, y int) int {
-	return x + y
+  return x + y
 }
 
 func add(x, y int) int {
-	return x + y
+  return x + y
 }
 ```
 </summary><br><b>
 
 Both. If two or more parameters share the same type, you can specify it only once.
 </b></details>
+
+<details>
+<summary>Write code that will execute the following function in a valid way
+
+```Go
+func swap(x, y string) (string, string) {
+  return y, x
+}
+```
+</summary><br><b>
+
+```Go
+x, y = swap("and roll", "rock")
+fmt.Println(a, b)
+```
+
+</b></details>
+
+<details>
+<summary>What is the result of the following code?
+
+```Go
+func process(num int) (x int) {
+  x = num + 10
+  var z = num - x
+  x = z + x
+  return
+}
+
+func main() {
+  fmt.Println(process(10))
+}
+```
+</summary><br><b>
+
+10
+</b></details>
+
 
 ## Projects
 
