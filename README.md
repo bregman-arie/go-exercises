@@ -2,7 +2,7 @@
 
 :information_source: &nbsp;This repo contains questions and exercises to learn and practice Golang
 
-:bar_chart: &nbsp;There are currently **37** exercises and questions
+:bar_chart: &nbsp;There are currently **47** exercises and questions
 
 - [Go Exercises](#go-exercises)
   - [Exercises](#exercises)
@@ -13,9 +13,12 @@
     - [Functions](#functions)
   - [Questions](#questions)
     - [Go 101](#go-101)
-    - [Variables & Data Types](#variables--data-types)
+    - [Variables and Data Types](#variables-and-data-types)
+      - [Constants](#constants)
+    - [Conditionals](#conditionals)
     - [User Input](#user-input)
     - [Arrays](#arrays-1)
+    - [Loops](#loops-1)
     - [Functions](#functions-1)
   - [Projects](#projects)
 
@@ -31,6 +34,8 @@
 | Data Types | [Exercise](exercises/data_types/exercise.md) | [Solution](exercises/data_types/solution.md) | |
 | User Input | [Exercise](exercises/user_input/exercise.md) | [Solution](exercises/user_input/main.go) | |
 | Packages | [Exercise](exercises/packages/exercise.md) | [Solution](exercises/packages/main.go) | 
+| Conditionals | [Exercise](exercises/conditionals/exercise.md) | [Solution](exercises/conditionals/solution.md) | 
+| Switch | [Exercise](exercises/switch/exercise.md) | [Solution](exercises/switch/solution.md) | 
 
 
 ### Strings
@@ -107,7 +112,7 @@ This should be answered based on your usage but some examples are:
 Any exported variable, function, ... begins with a capital letter. In fact when using a package, you can use only the things the package exports for you and others to use.
 </b></details>
 
-### Variables & Data Types
+### Variables and Data Types
 
 <details>
 <summary>Demonstrate short and regular variable declaration</summary><br><b>
@@ -211,26 +216,6 @@ If you want to get "101" you should use the package "strconv" and replace <code>
 </b></details>
 
 <details>
-<summary>What is wrong with the following code?:
-
-```Go
-package main
-
-func main() {
-    var x = 2
-    var y = 3
-    const someConst = x + y
-}
-```
-</summary><br><b>
-Constants in Go can only be declared using constant expressions.
-But `x`, `y` and their sum is variable.
-<br>
-<code>const initializer x + y is not a constant</code>
-
-</b></details>
-
-<details>
 <summary>What would be the result of executing the following code:
 
 ```Go
@@ -270,6 +255,145 @@ func main() {
   fmt.Printf("The type of z: %T. The value of z: %v\n", y, y)
 }
 ```
+</b></details>
+
+<details>
+<summary>Demonstrate type conversion</summary><br><b>
+
+```Go
+package main
+
+import "fmt"
+
+func main() {
+    var x int = 2
+    fmt.Println(x)
+    var y float32 = float32(x)                
+    fmt.Println(y)
+}
+```
+</b></details>
+
+#### Constants 
+<details>
+<summary>What is wrong with the following code?:
+
+```Go
+package main
+
+func main() {
+    var x = 2
+    var y = 3
+    const someConst = x + y
+}
+```
+</summary><br><b>
+Constants in Go can only be declared using constant expressions.
+But `x`, `y` and their sum is variable.
+<br>
+<code>const initializer x + y is not a constant</code>
+
+</b></details>
+
+<details>
+<summary>What will be the result of executing the following code?
+
+```Go
+package main
+
+import "fmt"
+
+func main() {
+  const X := 2
+  fmt.Print(X)
+}
+```
+</summary><br><b>
+
+It won't run. Constants cannot be declared using `:=`.
+</b></details>
+
+<details>
+<summary>What will be the result of executing the following code?
+
+```Go
+package main
+
+import "fmt"
+
+const (
+    Const1 = 1 
+    Const2 = 1 < 2 
+    Const3 = 1 << 10                              
+)
+
+func main() {
+    fmt.Println(Const1)
+    fmt.Println(Const2)
+    fmt.Println(Const3)
+}
+```
+</summary><br><b>
+
+1
+true
+1024
+
+The 1024 result is because we shifted a 1 bit left 10 places.
+</b></details>
+
+### Conditionals
+
+<details>
+<summary>Define a variable with value of 5. Write a conditional to check if the value of the variable is bigger than 0 and if it is, print "It's bigger than 0!"</summary><br><b>
+
+```Go
+x := 5
+if x > 0 {
+  fmt.Print("It's bigger than  0!")
+}
+```
+</b></details>
+
+<details>
+<summary>Define a variable with a random value. If its value bigger than 10 print "yay!". If it's smaller than 10, print "nay!"</summary><br><b>
+
+```Go
+
+rand.Seed(time.Now().UnixNano())
+var x int = rand.Intn(100)
+if x > 10 {
+  fmt.Print("yay!")
+} else {
+  fmt.Print("nay!")
+}
+```
+</b></details>
+
+<details>
+<summary>What the following code does?
+
+```Go
+package main
+  
+import ( 
+    "fmt"
+    "math/rand"
+    "time"
+)
+
+func main() {
+    rand.Seed(time.Now().UnixNano())
+    if randNum := rand.Intn(100); randNum%2 == 0 {
+        fmt.Print("Bingo!")               
+    } else {
+        fmt.Print(randNum)
+    }       
+}
+```
+</summary><br><b>
+
+Defines a variable with random value between 0 and 100. If the random value is even, prints "Bingo!" otherwise, prints the random value itself.
 </b></details>
 
 
@@ -333,6 +457,35 @@ var rgb = [3]string{"red", "green", "blue"}
 
 ```Go
 [0 0 0 0 0 0 0 0 0 0]
+```
+</b></details>
+
+### Loops
+
+<details>
+<summary>Define a simple for loop with following components:
+
+* variable `i` initialized to 0
+* expression where the variable should be smaller than 50
+* at the end of each iteration the variable value should be incremented by 1
+* In the loop itself, the value of variable `i` should be added to a variable called `sum` (initialize the variable before the loop with value of 0)
+</summary><br><b>
+
+```Go
+sum := 0
+for i := 0; i < 50; i++ {
+    sum += i
+}
+```
+</b></details>
+
+<details>
+<summary>Implement infinite loop</summary><br><b>
+
+```Go
+for {
+    fmt.Print("forever!")
+}
 ```
 </b></details>
 
@@ -418,4 +571,6 @@ func main() {
 
 ## Projects
 
-TODO
+|Name|Description|Solution|Comments|
+|--------|--------|------|----|
+| Simple Web Server | [Description](projects/simple_web_server/README.md) | [Solution](projects/simple_web_server/main.go) | |
