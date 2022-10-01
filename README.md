@@ -2,7 +2,7 @@
 
 :information_source: &nbsp;This repo contains questions and exercises to learn and practice Golang
 
-:bar_chart: &nbsp;There are currently **47** exercises and questions
+:bar_chart: &nbsp;There are currently **60** exercises and questions
 
 - [Go Exercises](#go-exercises)
   - [Exercises](#exercises)
@@ -15,11 +15,16 @@
     - [Go 101](#go-101)
     - [Variables and Data Types](#variables-and-data-types)
       - [Constants](#constants)
+    - [Logical Operators](#logical-operators)
+    - [Strings](#strings-1)
     - [Conditionals](#conditionals)
+      - [Switch](#switch)
     - [User Input](#user-input)
     - [Arrays](#arrays-1)
     - [Loops](#loops-1)
     - [Functions](#functions-1)
+      - [Defer](#defer)
+    - [Packages](#packages)
   - [Projects](#projects)
 
 ## Exercises
@@ -33,7 +38,8 @@
 | Arithmetic Operators | [Exercise](exercises/arithmetic_operators/exercise.md) | [Solution](exercises/arithmetic_operators/main.go) | |
 | Data Types | [Exercise](exercises/data_types/exercise.md) | [Solution](exercises/data_types/solution.md) | |
 | User Input | [Exercise](exercises/user_input/exercise.md) | [Solution](exercises/user_input/main.go) | |
-| Packages | [Exercise](exercises/packages/exercise.md) | [Solution](exercises/packages/main.go) | 
+| Packages | [Exercise](exercises/packages/exercise.md) | [Solution](exercises/packages/main.go) |
+| Logical Operators | [Exercise](exercises/logical_operators/exercise.md) | [Solution](exercises/logical_operators/solution.md) |
 | Conditionals | [Exercise](exercises/conditionals/exercise.md) | [Solution](exercises/conditionals/solution.md) | 
 | Switch | [Exercise](exercises/switch/exercise.md) | [Solution](exercises/switch/solution.md) | 
 
@@ -274,6 +280,26 @@ func main() {
 ```
 </b></details>
 
+<details>
+<summary>What are package level variables? What would be the reason to use them?</summary><br><b>
+
+Package level variables are variables that defined at the package level instead of a specific function (like main for example).
+
+If you have multiple functions in your package that use the same variables, it might make these variables available to the functions by defining them at the package level. This can be in the same file or any file under the same package.
+For example:
+
+```Go
+package main
+
+packageLevelVar := 0 
+
+func main() {
+  nonPackageLevelVar := 0
+}
+```
+
+</b></details>
+
 #### Constants 
 <details>
 <summary>What is wrong with the following code?:
@@ -342,6 +368,94 @@ true
 The 1024 result is because we shifted a 1 bit left 10 places.
 </b></details>
 
+### Logical Operators
+
+<details>
+<summary>What is the output of the following code?
+
+```Go
+package main
+
+import "fmt"
+
+func main() {
+    x := 2017
+
+    fmt.Println(x > 2022 && x < 3000)
+    fmt.Println(x > 2000 && x < 3000)
+    fmt.Println(x > 2000 && x&2 == 0)              
+}
+```
+</summary><br><b>
+
+```
+false
+true
+false
+```
+</b></details>
+
+<details>
+<summary>What is the output of the following code?
+
+```Go
+package main
+
+import "fmt"
+
+func main() {
+    x := 2017
+
+    fmt.Println(x > 2022 || x < 3000)
+    fmt.Println(x > 2000 || x < 3000)
+    fmt.Println(x > 2000 || x&2 == 0)              
+}
+```
+</summary><br><b>
+
+```
+true
+true
+true
+```
+</b></details>
+
+<details>
+<summary>What is the output of the following code?
+
+```Go
+package main
+        
+import "fmt"
+        
+func main() {
+    x := true
+        
+    fmt.Println(x)
+    fmt.Println(!x)
+    fmt.Println(!x && x)
+    fmt.Println(!x || x)                   
+}
+```
+</summary><br><b>
+
+```
+true
+false
+false
+true
+```
+</b></details>
+
+### Strings
+
+<details>
+<summary>How to check if a string variable contains the character "o"?
+</summary><br><b>
+
+`containsO := strings.Contains(someVar, "o")`
+</b></details>
+
 ### Conditionals
 
 <details>
@@ -396,6 +510,36 @@ func main() {
 Defines a variable with random value between 0 and 100. If the random value is even, prints "Bingo!" otherwise, prints the random value itself.
 </b></details>
 
+#### Switch
+
+<details>
+<summary>Write a switch case to check what day of the week it is. If Sunday print "Here we go". If Monday print "We have just started". For any other day print the day.
+</summary><br><b>
+
+```Go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func main() {
+
+    today := time.Now().Weekday().String()
+
+    switch today {
+    case "Sunday":
+      fmt.Println("Here we go")
+    case "Monday":
+      fmt.Println("We have just started")
+    default:
+      fmt.Println(today)
+	}
+}
+```
+
+</b></details>
 
 ### User Input
 
@@ -489,6 +633,23 @@ for {
 ```
 </b></details>
 
+<details>
+<summary>What's the difference between the following two loops?
+
+```Go
+for {
+    fmt.Print("forever!")
+}
+
+for true {
+    fmt.Print("forever!")
+}
+```
+</summary><br><b>
+
+From result perspective, there is no difference. Both are infinite loops.
+</b></details>
+
 ### Functions
 
 <details>
@@ -496,7 +657,7 @@ for {
 
 ```Go
 func PrintHelloWorld() {
-  fmt.Println("Hello World")
+    fmt.Println("Hello World")
 }
 ```
 </b></details>
@@ -506,7 +667,7 @@ func PrintHelloWorld() {
 
 ```Go
 func add(x int, y int) int {
-  return x + y
+    return x + y
 }
 ```
 </summary><br><b>
@@ -514,16 +675,17 @@ func add(x int, y int) int {
 add is a function that takes two parameters (two integers) and returns their sum.
 </b></details>
 
+
 <details>
 <summary>Which of the following functions will work just fine?
 
 ```Go
 func add(x int, y int) int {
-  return x + y
+    return x + y
 }
 
 func add(x, y int) int {
-  return x + y
+    return x + y
 }
 ```
 </summary><br><b>
@@ -532,11 +694,17 @@ Both. If two or more parameters share the same type, you can specify it only onc
 </b></details>
 
 <details>
+<summary>True or False? A function in Go can return either zero or one values, but not more than that</summary><br><b>
+
+False. A fucntion in Go can return multiple values
+</b></details>
+
+<details>
 <summary>Write code that will execute the following function in a valid way
 
 ```Go
 func swap(x, y string) (string, string) {
-  return y, x
+    return y, x
 }
 ```
 </summary><br><b>
@@ -553,10 +721,10 @@ fmt.Println(a, b)
 
 ```Go
 func process(num int) (x int) {
-  x = num + 10
-  var z = num - x
-  x = z + x
-  return
+    x = num + 10
+    var z = num - x
+    x = z + x
+    return
 }
 
 func main() {
@@ -568,6 +736,83 @@ func main() {
 10
 </b></details>
 
+#### Defer
+
+<details>
+<summary>What will be the output of the following code? Why?
+
+```Go
+package main
+
+import "fmt"
+
+func main() {
+    defer fmt.Println("1")
+
+    fmt,Println("2")
+}
+```
+</summary><br><b>
+
+```
+2
+1
+```
+
+2 is printed before 1 due to the defer statement. The `defer` statement defers the execution of the function (`fmt.Println("1")`) until the surrounding fucntion (which is `main()`) returns.
+</b></details>
+
+<details><summary>True or False? The arguments of a deferred functions are evaluated but the function itself isn't called until the surrounding function returns</summary><br><b>
+
+True.
+</b></details>
+
+<details>
+<summary>What will be the output of the following code? Why?
+
+```Go
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("100")
+
+    for i := 0; i < 10; i++ {
+      defer fmt.Println(i)
+    }
+
+    fmt.Println("200")
+  }
+```
+</summary><br><b>
+
+```
+100
+200
+9
+8
+7
+6
+5
+4
+3
+2
+1
+0
+```
+
+Deferred functions are executed in a last-in-first-out order, this is why it prints it from 9 to 0 instead of from 0 to 9.
+</b></details>
+
+### Packages
+
+<details>
+<summary>How do you export a variable or a function in Go for other packages to use?
+</summary><br><b>
+
+Capitalize the first letter.
+</b></details>
 
 ## Projects
 
