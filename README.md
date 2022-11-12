@@ -9,6 +9,7 @@
     - [Hello World](#hello-world)
     - [Strings](#strings)
     - [Arrays](#arrays)
+    - [Maps](#maps)
     - [Loops](#loops)
     - [Functions](#functions)
   - [Questions](#questions)
@@ -22,6 +23,7 @@
     - [User Input](#user-input)
     - [Arrays](#arrays-1)
     - [Loops](#loops-1)
+    - [Maps](#maps-1)
     - [Functions](#functions-1)
       - [Defer](#defer)
     - [Packages](#packages)
@@ -56,6 +58,12 @@
 |--------|--------|------|----|
 | Arrays 101 | [Exercise](exercises/arrays_101/exercise.md) | [Solution](exercises/arrays_101/solution.md) | |
 | Slices 101 | [Exercise](exercises/slices_101/exercise.md) | [Solution](exercises/slices_101/solution.md) | |
+
+### Maps
+
+|Name|Exercise|Solution|Comments|
+|--------|--------|------|----|
+| Maps 101 | [Exercise](exercises/maps_101/exercise.md) | [Solution](exercises/maps_101/solution.md) | |
 
 ### Loops
 
@@ -110,6 +118,12 @@ This should be answered based on your usage but some examples are:
   * math - random numbers, arithmetic operations like square, etc.
   * time - for any time related operation
 
+</b></details>
+
+<details>
+<summary>True or False? Go is a compiled, statically typed language</summary><br><b>
+
+True
 </b></details>
 
 <details>
@@ -650,6 +664,20 @@ for true {
 From result perspective, there is no difference. Both are infinite loops.
 </b></details>
 
+### Maps
+
+<details>
+<summary>Define an empty map where all keys are of string type, as well as the values</summary><br><b>
+
+`var someMap = make(map[string]string)`
+</b></details>
+
+<details>
+<summary>True or False? All keys in a single map, should have the same data type</summary><br><b>
+
+True. This is also true for the all the values in a single map.
+</b></details>
+
 ### Functions
 
 <details>
@@ -811,7 +839,16 @@ Deferred functions are executed in a last-in-first-out order, this is why it pri
 <summary>How do you export a variable or a function in Go for other packages to use?
 </summary><br><b>
 
-Capitalize the first letter.
+Capitalize the first letter of what you would like to export.
+</b></details>
+
+<details>
+<summary>What are different levels of scope of variables?
+</summary><br><b>
+
+* Local
+* Package
+* Global
 </b></details>
 
 ## Projects
