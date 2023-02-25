@@ -2,7 +2,7 @@
 
 :information_source: &nbsp;This repo contains questions and exercises to learn and practice Golang
 
-:bar_chart: &nbsp;There are currently **60** exercises and questions
+:bar_chart: &nbsp;There are currently **70** exercises and questions
 
 - [Go Exercises](#go-exercises)
   - [Exercises](#exercises)
@@ -464,10 +464,84 @@ true
 ### Strings
 
 <details>
+<summary>Define a variable with the string value of "Hello, World"
+</summary><br><b>
+
+
+```Go
+var some_string := "Hello, World"
+```
+
+</b></details>
+
+<details>
+<summary>Define a variable that when printed will give this output:
+
+```
+Hello,
+World
+```
+</summary><br><b>
+
+
+```Go
+var some_string := "Hello,\nWorld"
+```
+
+</b></details>
+
+<details>
+<summary>How to print "Hello,\nWorld" ?
+</summary><br><b>
+
+
+```Go
+package main
+
+import "fmt"
+        
+func main() {
+    some_string := `Hello,\nWorld`
+
+    fmt.Println(some_string)
+}
+```
+
+</b></details>
+
+<details>
+<summary>What would be the output of the following code?
+
+```Go
+package main
+ 
+import "fmt"
+ 
+func main() {
+    some_string := "There"
+                                                                                                                                                        
+    fmt.Println("Hello", some_string)
+}
+```
+</summary><br><b>
+
+Hello There
+
+</b></details>
+
+
+<details>
 <summary>How to check if a string variable contains the character "o"?
 </summary><br><b>
 
+</b></details>
+
+<details>
+<summary>How to turn the string "Hi There" to "hi there" with the <code>strings</code> package?
+</summary><br><b>
+
 `containsO := strings.Contains(someVar, "o")`
+
 </b></details>
 
 ### Conditionals
