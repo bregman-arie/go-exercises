@@ -53,7 +53,7 @@ import "fmt"
 func main() {
     var food = "Pizza"
     var slices = 4
-    var pineappleOnPizza = True
+    var pineappleOnPizza = true
 }
 ```
 
