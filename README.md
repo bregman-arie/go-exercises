@@ -1,4 +1,6 @@
-# Go Exercises
+# Go Exercise
+
+<img src="images/gophers/exercise.png" />
 
 :information_source: &nbsp;This repo contains questions and exercises to learn and practice Golang
 
@@ -8,10 +10,13 @@
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <center>
+
 <table>
   <tr>
-    <td align="center"><a href="#team"><img src="images/gophers/baby.png" /><br /><b>Hello World</b><br><a href="#hello-world">- Exercises</a><br><a href="#go-101">- Questions</a></a></td>
-    <td align="center"><a href="#team"><img src="images/gophers/strings.png" /><br /><b>Strings</b><br><a href="#strings-exercises">- Exercises</a><br><a href="#strings">- Questions</a></a></td>
+    <td align="center"><img src="images/gophers/baby.png" /><br /><b>Hello World</b><br><a href="#hello-world">- Exercises</a><br><a href="#go-101">- Questions</a></a></td>
+    <td align="center"><img src="images/gophers/strings.png" /><br /><b>Strings</b><br><a href="#strings-exercises">- Exercises</a><br><a href="#strings">- Questions</a></a></td>
+    <td align="center"><img src="images/gophers/array.png" /><br /><b>Arrays</b><br><a href="#arrays-exercises">- Exercises</a><br><a href="#arrays">- Questions</a></a></td>
+    <td align="center"><img src="images/gophers/loop.png" /><br /><b>Loops</b><br><a href="#loops-exercises">- Exercises</a><br><a href="#loops">- Questions</a></a></td>
   </tr>
 
 </table>
@@ -20,14 +25,14 @@
 <!-- prettier-ignore-end -->
 <!-- ALL-TOPICS-LIST:END -->
 
-- [Go Exercises](#go-exercises)
+- [Go Exercise](#go-exercise)
   - [Exercises](#exercises)
     - [Hello World](#hello-world)
     - [Strings Exercises](#strings-exercises)
-    - [Arrays](#arrays)
-    - [Maps](#maps)
-    - [Loops](#loops)
-    - [Functions](#functions)
+    - [Arrays Exercises](#arrays-exercises)
+    - [Maps Exercises](#maps-exercises)
+    - [Loops Exercises](#loops-exercises)
+    - [Functions Exercises](#functions-exercises)
   - [Questions](#questions)
     - [Go 101](#go-101)
     - [Variables and Data Types](#variables-and-data-types)
@@ -39,10 +44,10 @@
     - [Conditionals](#conditionals)
       - [Switch](#switch)
     - [User Input](#user-input)
-    - [Arrays](#arrays-1)
-    - [Loops](#loops-1)
-    - [Maps](#maps-1)
-    - [Functions](#functions-1)
+    - [Arrays](#arrays)
+    - [Loops](#loops)
+    - [Maps](#maps)
+    - [Functions](#functions)
       - [Defer](#defer)
     - [Packages](#packages)
   - [Projects](#projects)
@@ -73,20 +78,20 @@
 |--------|--------|------|----|
 | Split Strings | [Exercise](exercises/split_strings/exercise.md) | [Solution](exercises/split_strings/solution.md) | |
 
-### Arrays
+### Arrays Exercises
 
 |Name|Exercise|Solution|Comments|
 |--------|--------|------|----|
 | Arrays 101 | [Exercise](exercises/arrays_101/exercise.md) | [Solution](exercises/arrays_101/solution.md) | |
 | Slices 101 | [Exercise](exercises/slices_101/exercise.md) | [Solution](exercises/slices_101/solution.md) | |
 
-### Maps
+### Maps Exercises
 
 |Name|Exercise|Solution|Comments|
 |--------|--------|------|----|
 | Maps 101 | [Exercise](exercises/maps_101/exercise.md) | [Solution](exercises/maps_101/solution.md) | |
 
-### Loops
+### Loops Exercises
 
 |Name|Exercise|Solution|Comments|
 |--------|--------|------|----|
@@ -94,7 +99,7 @@
 | Loops 102 | [Exercise](exercises/loops_102/exercise.md) | [Solution](exercises/loops_102/main.go) | |
 | Continue | [Exercise](exercises/continue/exercise.md) | [Solution](exercises/continue/main.go) | |
 
-### Functions
+### Functions Exercises
 
 |Name|Exercise|Solution|Comments|
 |--------|--------|------|----|
