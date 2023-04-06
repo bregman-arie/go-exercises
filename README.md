@@ -2,12 +2,28 @@
 
 :information_source: &nbsp;This repo contains questions and exercises to learn and practice Golang
 
-:bar_chart: &nbsp;There are currently **70** exercises and questions
+:bar_chart: &nbsp;There are currently **72** exercises and questions
+
+<!-- ALL-TOPICS-LIST:START -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<center>
+<table>
+  <tr>
+    <td align="center"><a href="#team"><img src="images/gophers/baby.png" /><br /><b>Hello World</b><br><a href="#hello-world">- Exercises</a><br><a href="#go-101">- Questions</a></a></td>
+    <td align="center"><a href="#team"><img src="images/gophers/strings.png" /><br /><b>Strings</b><br><a href="#strings-exercises">- Exercises</a><br><a href="#strings">- Questions</a></a></td>
+  </tr>
+
+</table>
+</center>
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-TOPICS-LIST:END -->
 
 - [Go Exercises](#go-exercises)
   - [Exercises](#exercises)
     - [Hello World](#hello-world)
-    - [Strings](#strings)
+    - [Strings Exercises](#strings-exercises)
     - [Arrays](#arrays)
     - [Maps](#maps)
     - [Loops](#loops)
@@ -15,9 +31,11 @@
   - [Questions](#questions)
     - [Go 101](#go-101)
     - [Variables and Data Types](#variables-and-data-types)
+      - [Conversion](#conversion)
+      - [Integers](#integers)
       - [Constants](#constants)
     - [Logical Operators](#logical-operators)
-    - [Strings](#strings-1)
+    - [Strings](#strings)
     - [Conditionals](#conditionals)
       - [Switch](#switch)
     - [User Input](#user-input)
@@ -28,6 +46,9 @@
       - [Defer](#defer)
     - [Packages](#packages)
   - [Projects](#projects)
+  - [Credits](#credits)
+    - [Images](#images)
+
 
 ## Exercises
 
@@ -46,7 +67,7 @@
 | Switch | [Exercise](exercises/switch/exercise.md) | [Solution](exercises/switch/solution.md) | 
 
 
-### Strings
+### Strings Exercises
 
 |Name|Exercise|Solution|Comments|
 |--------|--------|------|----|
@@ -95,7 +116,6 @@
   * Garbage collected
   * Platform independent
   * Compile to standalone binary - anything you need to run your app will be compiled into one binary. Very useful for version management in run-time.
-  * Big community
 </b></details>
 
 <details>
@@ -174,65 +194,11 @@ So both `var userName = user` and `var userName string` are valid.
 </b></details>
 
 <details>
-<summary>What is the result of the following program?
-
-```Go
-package main
- 
-import "fmt"
- 
-func main() {
-    var x uint
-    x = -3
-    // comment!
-    fmt.Println(x)
-}
-```
-</summary><br><b>
-
-Error. When `x` is declared as `uint` it means you can't put any negative values. But because we did put a negative value (`-3`) it will fail to compile it.
-</b></details>
-
-<details>
-<summary>What is the problem with the following block of code? How to fix it?
-
-```
-func main() {
-    var x float32 = 13.5
-    var y int
-    y = x
-}
-```
-</summary><br><b>
-</b></details>
-
-<details>
 <summary>What is the difference between <code>var x int = 2</code> and <code>x := 2</code>?</summary><br><b>
 
 The result is the same, a variable with the value 2.
 
 With <code>var x int = 2</code> we are setting the variable type to integer, while with <code>x := 2</code> we are letting Go figure out by itself the type.
-</b></details>
-
-<details>
-<summary>The following block of code tries to convert the integer 101 to a string but instead we get "e". Why is that? How to fix it?
-
-```
-package main
-
-import "fmt"
-
-func main() {
-    var x int = 101
-    var y string
-    y = string(x)
-    fmt.Println(y)
-}
-```
-</summary><br><b>
-
-It looks what unicode value is set at 101 and uses it for converting the integer to a string.
-If you want to get "101" you should use the package "strconv" and replace <code>y = string(x)</code> with <code>y = strconv.Itoa(x)</code>
 </b></details>
 
 <details>
@@ -278,23 +244,6 @@ func main() {
 </b></details>
 
 <details>
-<summary>Demonstrate type conversion</summary><br><b>
-
-```Go
-package main
-
-import "fmt"
-
-func main() {
-    var x int = 2
-    fmt.Println(x)
-    var y float32 = float32(x)                
-    fmt.Println(y)
-}
-```
-</b></details>
-
-<details>
 <summary>What are package level variables? What would be the reason to use them?</summary><br><b>
 
 Package level variables are variables that defined at the package level instead of a specific function (like main for example).
@@ -314,7 +263,101 @@ func main() {
 
 </b></details>
 
-#### Constants 
+#### Conversion
+
+<details>
+<summary>What is the problem with the following block of code? How to fix it?
+
+```
+func main() {
+    var x float32 = 13.5
+    var y int
+    y = x
+}
+```
+</summary><br><b>
+</b></details>
+
+<details>
+<summary>Demonstrate type conversion</summary><br><b>
+
+```Go
+package main
+
+import "fmt"
+
+func main() {
+    var x int = 2
+    fmt.Println(x)
+    var y float32 = float32(x)                
+    fmt.Println(y)
+}
+```
+</b></details>
+
+<details>
+<summary>The following block of code tries to convert the integer 101 to a string but instead we get "e". Why is that? How to fix it?
+
+```
+package main
+
+import "fmt"
+
+func main() {
+    var x int = 101
+    var y string
+    y = string(x)
+    fmt.Println(y)
+}
+```
+</summary><br><b>
+
+It looks what unicode value is set at 101 and uses it for converting the integer to a string.
+If you want to get "101" you should use the package "strconv" and replace <code>y = string(x)</code> with <code>y = strconv.Itoa(x)</code>
+</b></details>
+
+#### Integers
+
+<details>
+<summary>What is the result of the following program?
+
+```Go
+package main
+ 
+import "fmt"
+ 
+func main() {
+    var x uint
+    x = -3
+    // comment!
+    fmt.Println(x)
+}
+```
+</summary><br><b>
+
+Error. When `x` is declared as `uint` it means you can't put any negative values. But because we did put a negative value (`-3`) it will fail to compile it.
+</b></details>
+
+<details>
+<summary>How to print a random integer between 0 and 10?</summary><br><b>
+
+```
+package main
+
+import (
+	"fmt"
+	"math/rand"
+)
+
+func main() {
+	fmt.Println("A random integer:", rand.Intn(10))
+}
+```
+</b></details>
+
+
+#### Constants
+
 <details>
 <summary>What is wrong with the following code?:
 
@@ -519,7 +562,7 @@ import "fmt"
  
 func main() {
     some_string := "There"
-                                                                                                                                                        
+                              
     fmt.Println("Hello", some_string)
 }
 ```
@@ -529,9 +572,26 @@ Hello There
 
 </b></details>
 
+<details>
+<summary>How to print the length of a character in Go?
+</summary><br><b>
+
+```Go
+package main                         
+
+import "fmt"
+
+func main() {
+    str := "Hello, world!"
+    fmt.Println(len(str))
+}
+```
+
+</b></details>
+
 
 <details>
-<summary>How to check if a string variable contains the character "o"?
+<summary>How to check if a string variable contains the string "ob1"?
 </summary><br><b>
 
 </b></details>
@@ -930,3 +990,10 @@ Capitalize the first letter of what you would like to export.
 |Name|Description|Solution|Comments|
 |--------|--------|------|----|
 | Simple Web Server | [Description](projects/simple_web_server/README.md) | [Solution](projects/simple_web_server/main.go) | |
+
+## Credits
+
+### Images
+
+Go Gopher was designed by Renee French.
+The specific Go Gophers designs used in this project created by Arie Bregman
