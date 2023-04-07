@@ -4,7 +4,7 @@
 
 :information_source: &nbsp;This repo contains questions and exercises to learn and practice Golang
 
-:bar_chart: &nbsp;There are currently **72** exercises and questions
+:bar_chart: &nbsp;There are currently **75** exercises and questions
 
 <!-- ALL-TOPICS-LIST:START -->
 <!-- prettier-ignore-start -->
@@ -35,7 +35,7 @@
     - [Functions Exercises](#functions-exercises)
   - [Questions](#questions)
     - [Go 101](#go-101)
-    - [Variables and Data Types](#variables-and-data-types)
+      - [Variables and Data Types](#variables-and-data-types)
       - [Conversion](#conversion)
       - [Integers](#integers)
       - [Constants](#constants)
@@ -124,28 +124,6 @@
 </b></details>
 
 <details>
-<summary>True or False?
-
-  * In Go we can redeclare variables
-  * Once a variable declared, we must use it
-</summary>
-
-* False
-* True
-</b></details>
-
-<details>
-<summary>What libraries of Go have you used?</summary><br><b>
-
-This should be answered based on your usage but some examples are:
-
-  * fmt - formatted I/O
-  * math - random numbers, arithmetic operations like square, etc.
-  * time - for any time related operation
-
-</b></details>
-
-<details>
 <summary>True or False? Go is a compiled, statically typed language</summary><br><b>
 
 True
@@ -157,7 +135,7 @@ True
 Any exported variable, function, ... begins with a capital letter. In fact when using a package, you can use only the things the package exports for you and others to use.
 </b></details>
 
-### Variables and Data Types
+#### Variables and Data Types
 
 <details>
 <summary>Demonstrate short and regular variable declaration</summary><br><b>
@@ -174,6 +152,17 @@ func main() {
   fmt.Printf("x: %v. y: %v", x, y)
 }
 ```
+</b></details>
+
+<details>
+<summary>True or False?
+
+  * In Go we can redeclare variables
+  * Once a variable declared, we must use it
+</summary>
+
+* False
+* True
 </b></details>
 
 <details>
@@ -203,7 +192,7 @@ So both `var userName = user` and `var userName string` are valid.
 
 The result is the same, a variable with the value 2.
 
-With <code>var x int = 2</code> we are setting the variable type to integer, while with <code>x := 2</code> we are letting Go figure out by itself the type.
+With <code>var x int = 2</code> we are setting the variable type to integer, while with <code>x := 2</code> we are letting Go figure out by itself the type. The result is the same, both styles can't be used in every situation. For example, short declaration can't be used outside of a function.
 </b></details>
 
 <details>
@@ -259,7 +248,7 @@ For example:
 ```Go
 package main
 
-packageLevelVar := 0 
+var packageLevelVar int = 0 
 
 func main() {
   nonPackageLevelVar := 0
@@ -360,8 +349,29 @@ func main() {
 ```
 </b></details>
 
-
 #### Constants
+
+<details>
+<summary>Demonstrate decelaration of constants in the following forms:
+
+* Single constant
+* Multiple constants in one block
+  
+</summary><br><b>
+
+```Go
+// Single constant
+const x int = 2732
+
+// Multiple constants in one block
+const (
+  y = 2017
+  z = 2022
+)
+```
+
+</b></details>
+
 
 <details>
 <summary>What is wrong with the following code?:
@@ -370,14 +380,14 @@ func main() {
 package main
 
 func main() {
-    var x = 2
-    var y = 3
+    var x int = 2
+    var y int = 3
     const someConst = x + y
 }
 ```
 </summary><br><b>
 Constants in Go can only be declared using constant expressions.
-But `x`, `y` and their sum is variable.
+But `x`, `y` are variables hence, their sum is variable.
 <br>
 <code>const initializer x + y is not a constant</code>
 
@@ -742,6 +752,14 @@ The value of `age` variable and then the memory location of `age` variable
 ### Arrays
 
 <details>
+<summary>Define an array of integers of size 4 without value (no items).</summary><br><b>
+
+```Go
+var x [4]int
+```
+</b></details>
+
+<details>
 <summary>Define an array of the following colors: red, green and blue</summary><br><b>
 
 ```Go
@@ -755,6 +773,27 @@ var rgb = [3]string{"red", "green", "blue"}
 ```Go
 [0 0 0 0 0 0 0 0 0 0]
 ```
+</b></details>
+
+<details>
+<summary>Define an array of integers of size 10. All the values should be zeros except first one which should be 5 and the last one which should be 100</summary><br><b>
+
+```Go
+var arr = [10]int{5, 9: 100}
+```
+</b></details>
+
+<details>
+<summary>What would be the result of the following code?
+
+```Go
+var arr = [...]int{1, 2, 3, 4}
+var anotherArr = [4]int{1, 2, 3, 4}
+fmt.Println(arr == anotherArr)
+```
+</summary><br><b>
+
+The result of comparison is true.
 </b></details>
 
 ### Loops
