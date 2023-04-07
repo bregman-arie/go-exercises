@@ -4,7 +4,7 @@
 
 :information_source: &nbsp;This repo contains questions and exercises to learn and practice Golang
 
-:bar_chart: &nbsp;There are currently **75** exercises and questions
+:bar_chart: &nbsp;There are currently **85** exercises and questions
 
 <!-- ALL-TOPICS-LIST:START -->
 <!-- prettier-ignore-start -->
@@ -15,7 +15,7 @@
   <tr>
     <td align="center"><img src="images/gophers/baby.png" /><br /><b>Hello World</b><br><a href="#hello-world">- Exercises</a><br><a href="#go-101">- Questions</a></a></td>
     <td align="center"><img src="images/gophers/strings.png" /><br /><b>Strings</b><br><a href="#strings-exercises">- Exercises</a><br><a href="#strings">- Questions</a></a></td>
-    <td align="center"><img src="images/gophers/array.png" /><br /><b>Arrays</b><br><a href="#arrays-exercises">- Exercises</a><br><a href="#arrays">- Questions</a></a></td>
+    <td align="center"><img src="images/gophers/array.png" /><br /><b>Arrays and Slices</b><br><a href="##arrays-and-slices-exercises">- Exercises</a><br><a href="#arrays-and-slices">- Questions</a></a></td>
     <td align="center"><img src="images/gophers/loop.png" /><br /><b>Loops</b><br><a href="#loops-exercises">- Exercises</a><br><a href="#loops">- Questions</a></a></td>
   </tr>
 
@@ -29,7 +29,7 @@
   - [Exercises](#exercises)
     - [Hello World](#hello-world)
     - [Strings Exercises](#strings-exercises)
-    - [Arrays Exercises](#arrays-exercises)
+    - [Arrays and Slices Exercises](#arrays-and-slices-exercises)
     - [Maps Exercises](#maps-exercises)
     - [Loops Exercises](#loops-exercises)
     - [Functions Exercises](#functions-exercises)
@@ -44,7 +44,7 @@
     - [Conditionals](#conditionals)
       - [Switch](#switch)
     - [User Input](#user-input)
-    - [Arrays](#arrays)
+    - [Arrays and Slices](#arrays-and-slices)
     - [Loops](#loops)
     - [Maps](#maps)
     - [Functions](#functions)
@@ -78,7 +78,7 @@
 |--------|--------|------|----|
 | Split Strings | [Exercise](exercises/split_strings/exercise.md) | [Solution](exercises/split_strings/solution.md) | |
 
-### Arrays Exercises
+### Arrays and Slices Exercises
 
 |Name|Exercise|Solution|Comments|
 |--------|--------|------|----|
@@ -749,7 +749,7 @@ The value of `age` variable and then the memory location of `age` variable
 
 </b></details>
 
-### Arrays
+### Arrays and Slices
 
 <details>
 <summary>Define an array of integers of size 4 without value (no items).</summary><br><b>
@@ -794,6 +794,88 @@ fmt.Println(arr == anotherArr)
 </summary><br><b>
 
 The result of comparison is true.
+</b></details>
+
+<details>
+<summary>Assuming there is a defined array called <code>arr</code>, print its length</summary><br><b>
+
+```Go
+fmt.Println(len(arr))
+```
+</b></details>
+
+<details>
+<summary>True or False? An array of type [1]int is the same type as an array of [2]int</summary><br><b>
+
+False. Go treats the array size as being part of the type itself. So [1]int type != [2]int type.
+</b></details>
+
+<details>
+<summary>True or False? If <code>var x := 2</code>, then <code>var y [x]int</code> is an array of size 2</summary><br><b>
+
+False. It's not possible to use variable to define an array of certain size. As the size of an array is part of its type and types must be resolved at compile time, not runtime.
+</b></details>
+
+<details>
+<summary>Demonstrate defining the following slices:
+
+* without values (with nil)
+* with two values
+</summary><br><b>
+
+`var slice []int`
+`var slice = []int{1, 2}`
+</b></details>
+
+<details>
+<summary>Append to a slice called <code>b</code> the number 7</summary><br><b>
+
+`b = append(b, 7)`
+</b></details>
+
+<details>
+<summary>Given that <code>var slice = []int{2, 0, 1, 7}</code> what would be the result of <code>slice = append(slice, 2, 0, 2, 2)</code></summary><br><b>
+
+`{2, 0, 1, 7, 2, 0, 2, 2}`
+</b></details>
+
+<details>
+<summary>How to compare two slices?</summary><br><b>
+
+```Go
+package main
+
+import (
+    "fmt"
+    "reflect"
+)
+
+func main() {
+    x := []int {2, 0, 1, 7}
+    y := []int {2, 0, 2, 2}
+
+    fmt.Println(reflect.DeepEqual(x, y))
+}
+```
+
+</b></details>
+
+<details>
+<summary>Why in Go you need assign the value returned from append function as opposed of other programming languages like Python, where you don't need to do it?</summary><br><b>
+
+Because in Go when you pass a something to a function, it copies it. So when we append something to a slice it appends it to a copy of it. So in order to change the original slice, we need to assign the returned copy back into the original slice.
+</b></details>
+
+<details>
+<summary>How create a slice of size capacity (not size) of 20?</summary><br><b>
+
+`slice := make([]int, 20)`
+</b></details>
+
+<details>
+<summary>What's the use case for defining in advance the capacity of a slice?</summary><br><b>
+
+It's more efficent to set the size once for a slice rather than increase its capacity every times new items added to it.
 </b></details>
 
 ### Loops
