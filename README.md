@@ -4,7 +4,7 @@
 
 :information_source: &nbsp;This repo contains questions and exercises to learn and practice Golang
 
-:bar_chart: &nbsp;There are currently **85** exercises and questions
+:bar_chart: &nbsp;There are currently **98** exercises and questions
 
 <!-- ALL-TOPICS-LIST:START -->
 <!-- prettier-ignore-start -->
@@ -604,6 +604,27 @@ func main() {
 
 </b></details>
 
+<details>
+<summary>What would be the output of the following code? Why?
+
+```Go
+var str string = "cowabunga"
+fmt.Println(str[3])
+```
+</summary><br><b>
+
+97
+Because it prints the ascii code of 'a' which is 97.
+</b></details>
+
+<details>
+<summary>Assuming <code>var str string = "cowabunga"</code>, What would be the output of the following lines?
+
+* `fmt.Println(str[3:5])`
+</summary><br><b>
+
+'ab'
+</b></details>
 
 <details>
 <summary>How to check if a string variable contains the string "ob1"?
@@ -614,8 +635,6 @@ func main() {
 <details>
 <summary>How to turn the string "Hi There" to "hi there" with the <code>strings</code> package?
 </summary><br><b>
-
-`containsO := strings.Contains(someVar, "o")`
 
 </b></details>
 
@@ -836,7 +855,7 @@ False. It's not possible to use variable to define an array of certain size. As 
 <details>
 <summary>Given that <code>var slice = []int{2, 0, 1, 7}</code> what would be the result of <code>slice = append(slice, 2, 0, 2, 2)</code></summary><br><b>
 
-`{2, 0, 1, 7, 2, 0, 2, 2}`
+`[2 0 1 7 2 0 2 2]`
 </b></details>
 
 <details>
@@ -867,15 +886,88 @@ Because in Go when you pass a something to a function, it copies it. So when we 
 </b></details>
 
 <details>
-<summary>How create a slice of size capacity (not size) of 20?</summary><br><b>
+<summary>How create a slice of capacity (not size) of 20?</summary><br><b>
 
 `slice := make([]int, 20)`
+</b></details>
+
+<details>
+<summary>How create a slice of size 3 ad capacity of 10?</summary><br><b>
+
+`slice := make([]int, 3, 20)`
 </b></details>
 
 <details>
 <summary>What's the use case for defining in advance the capacity of a slice?</summary><br><b>
 
 It's more efficent to set the size once for a slice rather than increase its capacity every times new items added to it.
+</b></details>
+
+<details>
+<summary>What's the value of <code>slice</code> after running the following code? Why?
+
+```Go
+slice := make([]int, 3)
+slice = append(slice, 41)
+```
+</summary><br><b>
+
+`[0 0 0 41]`
+</b></details>
+
+<details>
+<summary>True or False? When specifying the capacity of a slice, it's always best to specify a capacity that is bigger than the slice size</summary><br><b>
+
+True. Otherwise it will cause compile-time error or run-time error, depends on how you defined it.
+</b></details>
+
+<details>
+<summary>Given <code>slice := []int{1, 2, 3, 4, 5}</code> what would be the result of the following expressions:
+
+* `slice[:]`
+* `slice[2:]`
+* `slice[:1]`
+* `slice[2:4]`
+</summary><br><b>
+
+* `[1 2 3 4 5]`
+* `[3 4 5]`
+* `[1]`
+* `[3 4]`
+</b></details>
+
+<details>
+<summary>What's the output of the following program?
+
+```Go
+slice := []int{1, 2, 3}
+anotherSlice := slice[1:]
+slice[1] = 999
+anotherslice[1] = 5
+fmt.Println("slice:", slice)
+fmt.Println("slice:", anotherSlice)
+```
+</summary><br><b>
+
+```
+[10 999 3]
+[999 5]
+```
+
+The expalantion is that slicing a slice isn't creating a copy of the data but rather creates another variable that shares the very same memory.
+</b></details>
+
+<details>
+<summary>How to create an independant slice of a slice?</summary><br><b>
+
+When creating a slice of a slice, it will create variable that shares the same memory. To create a slice that is indepdant of the original slice, you can use the built-in function `copy`
+
+```Go
+slice := []int{1, 2, 3}
+destSlice = make([]int, 3)
+numOfElements := copy(slice, destSlice)
+
+```
 </b></details>
 
 ### Loops
@@ -927,15 +1019,90 @@ From result perspective, there is no difference. Both are infinite loops.
 ### Maps
 
 <details>
-<summary>Define an empty map where all keys are of string type, as well as the values</summary><br><b>
+<summary>Define the following map variables:
 
-`var someMap = make(map[string]string)`
+* an empty map where all keys are of string type, as well as the values
+* an empty map where all the keys are of string type and the values are of int type
+* A map with string type keys and int array values (non empty map, populate it with data)
+* Empty map with int type keys and string type values of size 100
+</summary><br><b>
+
+`var someMap = map[string]string`
+
+`anotherMap := map[string]int{}`
+
+```Go
+nonEmptyMap := map[string][]int{
+  "someKey": []int{1, 2, 3},
+  "anotherKey": []int{4, 5, 6},
+}
+```
+
+`someMap := make(map[int][]string, 100)`
 </b></details>
 
 <details>
 <summary>True or False? All keys in a single map, should have the same data type</summary><br><b>
 
 True. This is also true for the all the values in a single map.
+</b></details>
+
+<details>
+<summary>How to check the number of key-value pairs in a map?</summary><br><b>
+
+`len(someMap)`
+</b></details>
+
+<details>
+<summary>True or False? To compare maps, one can use "==" this way <code>someMap == anotherMap</code></summary><br><b>
+
+False.
+</b></details>
+
+<details>
+<summary>What's the output of the following code?
+
+```Go
+someMap := map[string]int{}
+someMap["x"] = 41
+fmt.Println(someMap["y"])
+```
+</summary><br><b>
+
+0
+</b></details>
+
+<details>
+<summary>What's the output of the following code?
+
+```Go
+someMap := map[string]int{
+  "x": 41,
+}
+value, exists := someMap["x"]
+fmt.Println(value, exists)
+value, exists = someMap["y"]
+fmt.Println(value, exists)
+```
+</summary><br><b>
+
+41 true
+0 false
+</b></details>
+
+<details>
+<summary>Remove from the following map the key-value pair of "y"
+
+```Go
+someMap := map[string]int{
+  "x": 41,
+  "y": 303,
+  "z": 56,
+}
+```
+</summary><br><b>
+
+`delete(someMap, "y")`
 </b></details>
 
 ### Functions
