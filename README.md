@@ -111,9 +111,9 @@
 
 ### Generics Exercises
 
-|Name|Exercise|Solution|Comments|
-|----|--------|--------|--------|
-| Generics 101 | [Exercise]() | [Solution]() | |
+|Name| Exercise                                        | Solution                                   |Comments|
+|----|-------------------------------------------------|--------------------------------------------|--------|
+| Generics 101 | [Exercise](exercises/generics_101/exercises.md) | [Solution](exercises/generics_101/main.go) | |
 
 ## Questions
 
