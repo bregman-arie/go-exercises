@@ -7,7 +7,7 @@ and ```uint32```.
 2. Create a function to get two numbers of ```CType``` and return the summation of those two.
    1. A (provided ```CType```)
    2. B (provided ```CType```)
-3. Create a list of ```CType```s with at least 5 elements init.
+3. Create a list of ```uints```s with at least 5 elements init.
 4. Update your second step function to get variable number of ```CType```s and
 return the summation of all of them.
     1. Numbers (provided ```... CType```)
