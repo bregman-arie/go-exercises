@@ -111,9 +111,9 @@
 
 ### Generics Exercises
 
-|Name| Exercise                                        | Solution                                   |Comments|
-|----|-------------------------------------------------|--------------------------------------------|--------|
-| Generics 101 | [Exercise](exercises/generics_101/exercises.md) | [Solution](exercises/generics_101/main.go) | |
+|Name| Exercise                                       | Solution                                   |Comments|
+|----|------------------------------------------------|--------------------------------------------|--------|
+| Generics 101 | [Exercise](exercises/generics_101/exercise.md) | [Solution](exercises/generics_101/main.go) | |
 
 ## Questions
 
@@ -400,7 +400,7 @@ package main
 import "fmt"
 
 func main() {
-  const X := 2
+  const X = 2
   fmt.Print(X)
 }
 ```
@@ -999,6 +999,28 @@ Capitalize the first letter of what you would like to export.
 </b></details>
 
 ### Generics
+
+<details>
+<summary>How can you define your custom generic type in Golang?
+</summary><br><b>
+
+By creating an interface.
+
+```go
+package main
+
+type C interface {
+	int | int32 | string
+}
+```
+
+</b></details>
+
+<details>
+<summary>
+</summary><br><b>
+
+</b></details>
 
 ## Projects
 
