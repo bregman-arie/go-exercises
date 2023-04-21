@@ -400,7 +400,7 @@ package main
 import "fmt"
 
 func main() {
-  const X = 2
+  const X := 2
   fmt.Print(X)
 }
 ```
