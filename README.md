@@ -4,7 +4,7 @@
 
 :information_source: &nbsp;This repo contains questions and exercises to learn and practice Golang
 
-:bar_chart: &nbsp;There are currently **72** exercises and questions
+:bar_chart: &nbsp;There are currently **98** exercises and questions
 
 <!-- ALL-TOPICS-LIST:START -->
 <!-- prettier-ignore-start -->
@@ -15,7 +15,7 @@
   <tr>
     <td align="center"><img src="images/gophers/baby.png" /><br /><b>Hello World</b><br><a href="#hello-world">- Exercises</a><br><a href="#go-101">- Questions</a></a></td>
     <td align="center"><img src="images/gophers/strings.png" /><br /><b>Strings</b><br><a href="#strings-exercises">- Exercises</a><br><a href="#strings">- Questions</a></a></td>
-    <td align="center"><img src="images/gophers/array.png" /><br /><b>Arrays</b><br><a href="#arrays-exercises">- Exercises</a><br><a href="#arrays">- Questions</a></a></td>
+    <td align="center"><img src="images/gophers/array.png" /><br /><b>Arrays and Slices</b><br><a href="##arrays-and-slices-exercises">- Exercises</a><br><a href="#arrays-and-slices">- Questions</a></a></td>
     <td align="center"><img src="images/gophers/loop.png" /><br /><b>Loops</b><br><a href="#loops-exercises">- Exercises</a><br><a href="#loops">- Questions</a></a></td>
   </tr>
 
@@ -29,14 +29,14 @@
   - [Exercises](#exercises)
     - [Hello World](#hello-world)
     - [Strings Exercises](#strings-exercises)
-    - [Arrays Exercises](#arrays-exercises)
+    - [Arrays and Slices Exercises](#arrays-and-slices-exercises)
     - [Maps Exercises](#maps-exercises)
     - [Loops Exercises](#loops-exercises)
     - [Functions Exercises](#functions-exercises)
     - [Generics Exercises](#generics-exercises)
   - [Questions](#questions)
     - [Go 101](#go-101)
-    - [Variables and Data Types](#variables-and-data-types)
+      - [Variables and Data Types](#variables-and-data-types)
       - [Conversion](#conversion)
       - [Integers](#integers)
       - [Constants](#constants)
@@ -45,7 +45,7 @@
     - [Conditionals](#conditionals)
       - [Switch](#switch)
     - [User Input](#user-input)
-    - [Arrays](#arrays)
+    - [Arrays and Slices](#arrays-and-slices)
     - [Loops](#loops)
     - [Maps](#maps)
     - [Functions](#functions)
@@ -80,7 +80,7 @@
 |--------|--------|------|----|
 | Split Strings | [Exercise](exercises/split_strings/exercise.md) | [Solution](exercises/split_strings/solution.md) | |
 
-### Arrays Exercises
+### Arrays and Slices Exercises
 
 |Name|Exercise|Solution|Comments|
 |--------|--------|------|----|
@@ -132,28 +132,6 @@
 </b></details>
 
 <details>
-<summary>True or False?
-
-  * In Go we can redeclare variables
-  * Once a variable declared, we must use it
-</summary>
-
-* False
-* True
-</b></details>
-
-<details>
-<summary>What libraries of Go have you used?</summary><br><b>
-
-This should be answered based on your usage but some examples are:
-
-  * fmt - formatted I/O
-  * math - random numbers, arithmetic operations like square, etc.
-  * time - for any time related operation
-
-</b></details>
-
-<details>
 <summary>True or False? Go is a compiled, statically typed language</summary><br><b>
 
 True
@@ -165,7 +143,7 @@ True
 Any exported variable, function, ... begins with a capital letter. In fact when using a package, you can use only the things the package exports for you and others to use.
 </b></details>
 
-### Variables and Data Types
+#### Variables and Data Types
 
 <details>
 <summary>Demonstrate short and regular variable declaration</summary><br><b>
@@ -182,6 +160,17 @@ func main() {
   fmt.Printf("x: %v. y: %v", x, y)
 }
 ```
+</b></details>
+
+<details>
+<summary>True or False?
+
+  * In Go we can redeclare variables
+  * Once a variable declared, we must use it
+</summary>
+
+* False
+* True
 </b></details>
 
 <details>
@@ -211,7 +200,7 @@ So both `var userName = user` and `var userName string` are valid.
 
 The result is the same, a variable with the value 2.
 
-With <code>var x int = 2</code> we are setting the variable type to integer, while with <code>x := 2</code> we are letting Go figure out by itself the type.
+With <code>var x int = 2</code> we are setting the variable type to integer, while with <code>x := 2</code> we are letting Go figure out by itself the type. The result is the same, both styles can't be used in every situation. For example, short declaration can't be used outside of a function.
 </b></details>
 
 <details>
@@ -267,7 +256,7 @@ For example:
 ```Go
 package main
 
-packageLevelVar := 0 
+var packageLevelVar int = 0 
 
 func main() {
   nonPackageLevelVar := 0
@@ -368,8 +357,29 @@ func main() {
 ```
 </b></details>
 
-
 #### Constants
+
+<details>
+<summary>Demonstrate decelaration of constants in the following forms:
+
+* Single constant
+* Multiple constants in one block
+  
+</summary><br><b>
+
+```Go
+// Single constant
+const x int = 2732
+
+// Multiple constants in one block
+const (
+  y = 2017
+  z = 2022
+)
+```
+
+</b></details>
+
 
 <details>
 <summary>What is wrong with the following code?:
@@ -378,14 +388,14 @@ func main() {
 package main
 
 func main() {
-    var x = 2
-    var y = 3
+    var x int = 2
+    var y int = 3
     const someConst = x + y
 }
 ```
 </summary><br><b>
 Constants in Go can only be declared using constant expressions.
-But `x`, `y` and their sum is variable.
+But `x`, `y` are variables hence, their sum is variable.
 <br>
 <code>const initializer x + y is not a constant</code>
 
@@ -602,6 +612,27 @@ func main() {
 
 </b></details>
 
+<details>
+<summary>What would be the output of the following code? Why?
+
+```Go
+var str string = "cowabunga"
+fmt.Println(str[3])
+```
+</summary><br><b>
+
+97
+Because it prints the ascii code of 'a' which is 97.
+</b></details>
+
+<details>
+<summary>Assuming <code>var str string = "cowabunga"</code>, What would be the output of the following lines?
+
+* `fmt.Println(str[3:5])`
+</summary><br><b>
+
+'ab'
+</b></details>
 
 <details>
 <summary>How to check if a string variable contains the string "ob1"?
@@ -612,8 +643,6 @@ func main() {
 <details>
 <summary>How to turn the string "Hi There" to "hi there" with the <code>strings</code> package?
 </summary><br><b>
-
-`containsO := strings.Contains(someVar, "o")`
 
 </b></details>
 
@@ -747,7 +776,15 @@ The value of `age` variable and then the memory location of `age` variable
 
 </b></details>
 
-### Arrays
+### Arrays and Slices
+
+<details>
+<summary>Define an array of integers of size 4 without value (no items).</summary><br><b>
+
+```Go
+var x [4]int
+```
+</b></details>
 
 <details>
 <summary>Define an array of the following colors: red, green and blue</summary><br><b>
@@ -762,6 +799,182 @@ var rgb = [3]string{"red", "green", "blue"}
 
 ```Go
 [0 0 0 0 0 0 0 0 0 0]
+```
+</b></details>
+
+<details>
+<summary>Define an array of integers of size 10. All the values should be zeros except first one which should be 5 and the last one which should be 100</summary><br><b>
+
+```Go
+var arr = [10]int{5, 9: 100}
+```
+</b></details>
+
+<details>
+<summary>What would be the result of the following code?
+
+```Go
+var arr = [...]int{1, 2, 3, 4}
+var anotherArr = [4]int{1, 2, 3, 4}
+fmt.Println(arr == anotherArr)
+```
+</summary><br><b>
+
+The result of comparison is true.
+</b></details>
+
+<details>
+<summary>Assuming there is a defined array called <code>arr</code>, print its length</summary><br><b>
+
+```Go
+fmt.Println(len(arr))
+```
+</b></details>
+
+<details>
+<summary>True or False? An array of type [1]int is the same type as an array of [2]int</summary><br><b>
+
+False. Go treats the array size as being part of the type itself. So [1]int type != [2]int type.
+</b></details>
+
+<details>
+<summary>True or False? If <code>var x := 2</code>, then <code>var y [x]int</code> is an array of size 2</summary><br><b>
+
+False. It's not possible to use variable to define an array of certain size. As the size of an array is part of its type and types must be resolved at compile time, not runtime.
+</b></details>
+
+<details>
+<summary>Demonstrate defining the following slices:
+
+* without values (with nil)
+* with two values
+</summary><br><b>
+
+`var slice []int`
+`var slice = []int{1, 2}`
+</b></details>
+
+<details>
+<summary>Append to a slice called <code>b</code> the number 7</summary><br><b>
+
+`b = append(b, 7)`
+</b></details>
+
+<details>
+<summary>Given that <code>var slice = []int{2, 0, 1, 7}</code> what would be the result of <code>slice = append(slice, 2, 0, 2, 2)</code></summary><br><b>
+
+`[2 0 1 7 2 0 2 2]`
+</b></details>
+
+<details>
+<summary>How to compare two slices?</summary><br><b>
+
+```Go
+package main
+
+import (
+    "fmt"
+    "reflect"
+)
+
+func main() {
+    x := []int {2, 0, 1, 7}
+    y := []int {2, 0, 2, 2}
+
+    fmt.Println(reflect.DeepEqual(x, y))
+}
+```
+
+</b></details>
+
+<details>
+<summary>Why in Go you need assign the value returned from append function as opposed of other programming languages like Python, where you don't need to do it?</summary><br><b>
+
+Because in Go when you pass a something to a function, it copies it. So when we append something to a slice it appends it to a copy of it. So in order to change the original slice, we need to assign the returned copy back into the original slice.
+</b></details>
+
+<details>
+<summary>How create a slice of capacity (not size) of 20?</summary><br><b>
+
+`slice := make([]int, 20)`
+</b></details>
+
+<details>
+<summary>How create a slice of size 3 ad capacity of 10?</summary><br><b>
+
+`slice := make([]int, 3, 20)`
+</b></details>
+
+<details>
+<summary>What's the use case for defining in advance the capacity of a slice?</summary><br><b>
+
+It's more efficent to set the size once for a slice rather than increase its capacity every times new items added to it.
+</b></details>
+
+<details>
+<summary>What's the value of <code>slice</code> after running the following code? Why?
+
+```Go
+slice := make([]int, 3)
+slice = append(slice, 41)
+```
+</summary><br><b>
+
+`[0 0 0 41]`
+</b></details>
+
+<details>
+<summary>True or False? When specifying the capacity of a slice, it's always best to specify a capacity that is bigger than the slice size</summary><br><b>
+
+True. Otherwise it will cause compile-time error or run-time error, depends on how you defined it.
+</b></details>
+
+<details>
+<summary>Given <code>slice := []int{1, 2, 3, 4, 5}</code> what would be the result of the following expressions:
+
+* `slice[:]`
+* `slice[2:]`
+* `slice[:1]`
+* `slice[2:4]`
+</summary><br><b>
+
+* `[1 2 3 4 5]`
+* `[3 4 5]`
+* `[1]`
+* `[3 4]`
+</b></details>
+
+<details>
+<summary>What's the output of the following program?
+
+```Go
+slice := []int{1, 2, 3}
+anotherSlice := slice[1:]
+slice[1] = 999
+anotherslice[1] = 5
+fmt.Println("slice:", slice)
+fmt.Println("slice:", anotherSlice)
+```
+</summary><br><b>
+
+```
+[10 999 3]
+[999 5]
+```
+
+The expalantion is that slicing a slice isn't creating a copy of the data but rather creates another variable that shares the very same memory.
+</b></details>
+
+<details>
+<summary>How to create an independant slice of a slice?</summary><br><b>
+
+When creating a slice of a slice, it will create variable that shares the same memory. To create a slice that is indepdant of the original slice, you can use the built-in function `copy`
+
+```Go
+slice := []int{1, 2, 3}
+destSlice = make([]int, 3)
+numOfElements := copy(slice, destSlice)
+
 ```
 </b></details>
 
@@ -814,15 +1027,90 @@ From result perspective, there is no difference. Both are infinite loops.
 ### Maps
 
 <details>
-<summary>Define an empty map where all keys are of string type, as well as the values</summary><br><b>
+<summary>Define the following map variables:
 
-`var someMap = make(map[string]string)`
+* an empty map where all keys are of string type, as well as the values
+* an empty map where all the keys are of string type and the values are of int type
+* A map with string type keys and int array values (non empty map, populate it with data)
+* Empty map with int type keys and string type values of size 100
+</summary><br><b>
+
+`var someMap = map[string]string`
+
+`anotherMap := map[string]int{}`
+
+```Go
+nonEmptyMap := map[string][]int{
+  "someKey": []int{1, 2, 3},
+  "anotherKey": []int{4, 5, 6},
+}
+```
+
+`someMap := make(map[int][]string, 100)`
 </b></details>
 
 <details>
 <summary>True or False? All keys in a single map, should have the same data type</summary><br><b>
 
 True. This is also true for the all the values in a single map.
+</b></details>
+
+<details>
+<summary>How to check the number of key-value pairs in a map?</summary><br><b>
+
+`len(someMap)`
+</b></details>
+
+<details>
+<summary>True or False? To compare maps, one can use "==" this way <code>someMap == anotherMap</code></summary><br><b>
+
+False.
+</b></details>
+
+<details>
+<summary>What's the output of the following code?
+
+```Go
+someMap := map[string]int{}
+someMap["x"] = 41
+fmt.Println(someMap["y"])
+```
+</summary><br><b>
+
+0
+</b></details>
+
+<details>
+<summary>What's the output of the following code?
+
+```Go
+someMap := map[string]int{
+  "x": 41,
+}
+value, exists := someMap["x"]
+fmt.Println(value, exists)
+value, exists = someMap["y"]
+fmt.Println(value, exists)
+```
+</summary><br><b>
+
+41 true
+0 false
+</b></details>
+
+<details>
+<summary>Remove from the following map the key-value pair of "y"
+
+```Go
+someMap := map[string]int{
+  "x": 41,
+  "y": 303,
+  "z": 56,
+}
+```
+</summary><br><b>
+
+`delete(someMap, "y")`
 </b></details>
 
 ### Functions
