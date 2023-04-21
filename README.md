@@ -1017,8 +1017,26 @@ type C interface {
 </b></details>
 
 <details>
-<summary>
+<summary>Why can we send both int and string to following function?
+
+```go
+package main
+
+import "fmt"
+
+type C interface {
+  int | int32 | string
+}
+
+func show[T C](input T) {
+	fmt.Println(input)
+}
+```
+
 </summary><br><b>
+
+Because we created show function as a generic function. Therefore
+it can get types that we have in C.
 
 </b></details>
 
