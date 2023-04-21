@@ -33,6 +33,7 @@
     - [Maps Exercises](#maps-exercises)
     - [Loops Exercises](#loops-exercises)
     - [Functions Exercises](#functions-exercises)
+    - [Generics Exercises](#generics-exercises)
   - [Questions](#questions)
     - [Go 101](#go-101)
     - [Variables and Data Types](#variables-and-data-types)
@@ -50,6 +51,7 @@
     - [Functions](#functions)
       - [Defer](#defer)
     - [Packages](#packages)
+    - [Generics](#generics)
   - [Projects](#projects)
   - [Credits](#credits)
     - [Images](#images)
@@ -106,6 +108,12 @@
 | Functions 101 | [Exercise](exercises/functions_101/exercise.md) | [Solution](exercises/functions_101/solution.md) | |
 | Named Return Values | [Exercise](exercises/named_return_values/exercise.md) | [Solution](exercises/named_return_values/solution.md) | |
 
+
+### Generics Exercises
+
+|Name|Exercise|Solution|Comments|
+|----|--------|--------|--------|
+| Generics 101 | [Exercise]() | [Solution]() | |
 
 ## Questions
 
@@ -989,6 +997,8 @@ Capitalize the first letter of what you would like to export.
 * Package
 * Global
 </b></details>
+
+### Generics
 
 ## Projects
 
