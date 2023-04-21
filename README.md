@@ -1040,6 +1040,35 @@ it can get types that we have in C.
 
 </b></details>
 
+<details>
+<summary>Change this function to accept any type in Golang.
+
+```go
+package main
+
+import "log"
+
+func do_log(input string) {
+	log.Print(input)
+}
+```
+
+</summary><br><b>
+
+Use any keyword.
+
+```go
+package main
+
+import "log"
+
+func do_log(input any) {
+	log.Print(input)
+}
+```
+
+</b></details>
+
 ## Projects
 
 |Name|Description|Solution|Comments|
