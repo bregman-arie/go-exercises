@@ -33,6 +33,7 @@
     - [Maps Exercises](#maps-exercises)
     - [Loops Exercises](#loops-exercises)
     - [Functions Exercises](#functions-exercises)
+    - [Generics Exercises](#generics-exercises)
   - [Questions](#questions)
     - [Go 101](#go-101)
       - [Variables and Data Types](#variables-and-data-types)
@@ -50,6 +51,7 @@
     - [Functions](#functions)
       - [Defer](#defer)
     - [Packages](#packages)
+    - [Generics](#generics)
   - [Projects](#projects)
   - [Credits](#credits)
     - [Images](#images)
@@ -106,6 +108,12 @@
 | Functions 101 | [Exercise](exercises/functions_101/exercise.md) | [Solution](exercises/functions_101/solution.md) | |
 | Named Return Values | [Exercise](exercises/named_return_values/exercise.md) | [Solution](exercises/named_return_values/solution.md) | |
 
+
+### Generics Exercises
+
+|Name| Exercise                                       | Solution                                   |Comments|
+|----|------------------------------------------------|--------------------------------------------|--------|
+| Generics 101 | [Exercise](exercises/generics_101/exercise.md) | [Solution](exercises/generics_101/main.go) | |
 
 ## Questions
 
@@ -1276,6 +1284,77 @@ Capitalize the first letter of what you would like to export.
 * Local
 * Package
 * Global
+</b></details>
+
+### Generics
+
+<details>
+<summary>How can you define your custom generic type in Golang?
+</summary><br><b>
+
+By creating an interface.
+
+```go
+package main
+
+type C interface {
+	int | int32 | string
+}
+```
+
+</b></details>
+
+<details>
+<summary>Why can we send both int and string to following function?
+
+```go
+package main
+
+import "fmt"
+
+type C interface {
+  int | int32 | string
+}
+
+func show[T C](input T) {
+	fmt.Println(input)
+}
+```
+
+</summary><br><b>
+
+Because we created show function as a generic function. Therefore
+it can get types that we have in C.
+
+</b></details>
+
+<details>
+<summary>Change this function to accept any type in Golang.
+
+```go
+package main
+
+import "log"
+
+func do_log(input string) {
+	log.Print(input)
+}
+```
+
+</summary><br><b>
+
+Use any keyword.
+
+```go
+package main
+
+import "log"
+
+func do_log(input any) {
+	log.Print(input)
+}
+```
+
 </b></details>
 
 ## Projects
