@@ -1273,7 +1273,7 @@ Deferred functions are executed in a last-in-first-out order, this is why it pri
 <details>
 <summary>What is the recover in Go?</summary>
 
-In Go, the `recover` function is used to regain control of a panicking goroutine. It is a built-in function that takes no arguments and returns an interface value.
+<b>In Go, the `recover` function is used to regain control of a panicking goroutine. It is a built-in function that takes no arguments and returns an interface value.
 
 ```Go
 package main
@@ -1295,12 +1295,12 @@ func main() {
 ```
 
 In this example, the `defer` statement is used to call the anonymous function after the `panic` statement. The `recover` function is called inside the anonymous function to regain control of the panicking goroutine.
-</details>
+</details><br></b>
 
 <details>
 <summary>Why we need to use recover?</summary>
 
-In Go, the `recover` function is used to regain control of a panicking goroutine. When a goroutine panics, it stops executing and starts to unwind the stack. During this process, it calls any deferred functions in reverse order. If one of these deferred functions calls the `recover` function, the panic is stopped and the program continues executing normally.
+<b>In Go, the `recover` function is used to regain control of a panicking goroutine. When a goroutine panics, it stops executing and starts to unwind the stack. During this process, it calls any deferred functions in reverse order. If one of these deferred functions calls the `recover` function, the panic is stopped and the program continues executing normally.
 
 The `recover` function returns the value passed to the panic function. This value can be used to determine what caused the `panic` and take appropriate action.
 
@@ -1357,8 +1357,7 @@ main.main()
 Process exited with status 2
 
 ```
-
-</details>
+</details><br></b>
 
 
 ### Packages
