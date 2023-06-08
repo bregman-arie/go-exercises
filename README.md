@@ -50,6 +50,7 @@
     - [Maps](#maps)
     - [Functions](#functions)
       - [Defer](#defer)
+      - [Recover](#recover)
     - [Packages](#packages)
     - [Generics](#generics)
   - [Projects](#projects)
@@ -1267,6 +1268,97 @@ func main() {
 
 Deferred functions are executed in a last-in-first-out order, this is why it prints it from 9 to 0 instead of from 0 to 9.
 </b></details>
+
+#### Recover
+<details>
+<summary>What is the recover in Go?</summary>
+
+<b>In Go, the `recover` function is used to regain control of a panicking goroutine. It is a built-in function that takes no arguments and returns an interface value.
+
+```Go
+package main
+
+import "fmt"
+
+func main() {
+    defer func() {
+        if r := recover(); r != nil {
+            fmt.Println("Recovered from:", r)
+        }
+    }()
+    panic("Something went wrong!")
+}
+```
+
+```Go
+// output: Recovered from: Something went wrong!
+```
+
+In this example, the `defer` statement is used to call the anonymous function after the `panic` statement. The `recover` function is called inside the anonymous function to regain control of the panicking goroutine.
+</details><br></b>
+
+<details>
+<summary>Why we need to use recover?</summary>
+
+<b>In Go, the `recover` function is used to regain control of a panicking goroutine. When a goroutine panics, it stops executing and starts to unwind the stack. During this process, it calls any deferred functions in reverse order. If one of these deferred functions calls the `recover` function, the panic is stopped and the program continues executing normally.
+
+The `recover` function returns the value passed to the panic function. This value can be used to determine what caused the `panic` and take appropriate action.
+
+For example, you might use the `recover` function to log an error message and continue running the program instead of crashing it.
+
+```Go
+package main
+
+import (
+	"fmt"
+)
+
+func downloadFile() {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("File download failed:", r)
+			// Perform error handling or other actions here
+		}
+	}()
+
+	// Simulating file download process
+	fmt.Println("Downloading file...")
+	panic("Download failed: Network connection lost")
+}
+
+func main() {
+	fmt.Println("Start")
+	downloadFile()
+	fmt.Println("End")
+}
+```
+
+```Go
+// output
+Start
+Downloading file...
+File download failed: Download failed: Network connection lost
+End
+```
+
+But if we still let panic without recover, program will be crashed and throw exception:
+```Go
+// output
+Start
+Downloading file...
+panic: Download failed: Network connection lost
+
+goroutine 1 [running]:
+main.downloadFile()
+    /path/to/file.go:10 +0x98
+main.main()
+    /path/to/file.go:17 +0x20
+
+Process exited with status 2
+
+```
+</details><br></b>
+
 
 ### Packages
 
