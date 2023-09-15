@@ -240,7 +240,7 @@ var (
 func main() {
   fmt.Printf("The type of x: %T. The value of x: %v\n", x, x)
   fmt.Printf("The type of y: %T. The value of y: %v\n", y, y)
-  fmt.Printf("The type of z: %T. The value of z: %v\n", y, y)
+  fmt.Printf("The type of z: %T. The value of z: %v\n", z, z)
 }
 ```
 </b></details>
@@ -951,14 +951,14 @@ True. Otherwise it will cause compile-time error or run-time error, depends on h
 slice := []int{1, 2, 3}
 anotherSlice := slice[1:]
 slice[1] = 999
-anotherslice[1] = 5
+anotherSlice[1] = 5
 fmt.Println("slice:", slice)
-fmt.Println("slice:", anotherSlice)
+fmt.Println("anotherSlice:", anotherSlice)
 ```
 </summary><br><b>
 
 ```
-[10 999 3]
+[1 999 3]
 [999 5]
 ```
 
