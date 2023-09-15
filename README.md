@@ -951,14 +951,14 @@ True. Otherwise it will cause compile-time error or run-time error, depends on h
 slice := []int{1, 2, 3}
 anotherSlice := slice[1:]
 slice[1] = 999
-anotherslice[1] = 5
+anotherSlice[1] = 5
 fmt.Println("slice:", slice)
-fmt.Println("slice:", anotherSlice)
+fmt.Println("anotherSlice:", anotherSlice)
 ```
 </summary><br><b>
 
 ```
-[10 999 3]
+[1 999 3]
 [999 5]
 ```
 
