@@ -240,7 +240,7 @@ var (
 func main() {
   fmt.Printf("The type of x: %T. The value of x: %v\n", x, x)
   fmt.Printf("The type of y: %T. The value of y: %v\n", y, y)
-  fmt.Printf("The type of z: %T. The value of z: %v\n", y, y)
+  fmt.Printf("The type of z: %T. The value of z: %v\n", z, z)
 }
 ```
 </b></details>
