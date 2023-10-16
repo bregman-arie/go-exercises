@@ -97,8 +97,8 @@
 
 |Name|Exercise|Solution|Comments|
 |--------|--------|------|----|
-| Loops 101 | [Exercise](exercises/loops_101/exercise.md) | [Solution](exercises/loops_101/main.go) | |
-| Loops 102 | [Exercise](exercises/loops_102/exercise.md) | [Solution](exercises/loops_102/main.go) | |
+| Loops 101 | [Exercise](exercises/loops_101/exercise.md) | [Solution](exercises/loops_101/solution.md) | |
+| Loops 102 | [Exercise](exercises/loops_102/exercise.md) | [Solution](exercises/loops_102/solution.md) | |
 | Continue | [Exercise](exercises/continue/exercise.md) | [Solution](exercises/continue/main.go) | |
 
 ### Functions Exercises
