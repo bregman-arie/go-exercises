@@ -71,7 +71,7 @@
 | Packages | [Exercise](exercises/packages/exercise.md) | [Solution](exercises/packages/main.go) |
 | Logical Operators | [Exercise](exercises/logical_operators/exercise.md) | [Solution](exercises/logical_operators/solution.md) |
 | Conditionals | [Exercise](exercises/conditionals/exercise.md) | [Solution](exercises/conditionals/solution.md) | 
-| Switch | [Exercise](exercises/switch/exercise.md) | [Solution](exercises/switch/solution.md) | 
+| Switch | [Exercise](exercises/switch/exercise.md) | [Solution](exercises/switch/main.go) | 
 
 
 ### Strings Exercises
@@ -91,14 +91,14 @@
 
 |Name|Exercise|Solution|Comments|
 |--------|--------|------|----|
-| Maps 101 | [Exercise](exercises/maps_101/exercise.md) | [Solution](exercises/maps_101/solution.md) | |
+| Maps 101 | [Exercise](exercises/maps_101/exercise.md) | [Solution](exercises/maps_101/main.go) | |
 
 ### Loops Exercises
 
 |Name|Exercise|Solution|Comments|
 |--------|--------|------|----|
-| Loops 101 | [Exercise](exercises/loops_101/exercise.md) | [Solution](exercises/loops_101/main.go) | |
-| Loops 102 | [Exercise](exercises/loops_102/exercise.md) | [Solution](exercises/loops_102/main.go) | |
+| Loops 101 | [Exercise](exercises/loops_101/exercise.md) | [Solution](exercises/loops_101/solution.md) | |
+| Loops 102 | [Exercise](exercises/loops_102/exercise.md) | [Solution](exercises/loops_102/solution.md) | |
 | Continue | [Exercise](exercises/continue/exercise.md) | [Solution](exercises/continue/main.go) | |
 
 ### Functions Exercises
